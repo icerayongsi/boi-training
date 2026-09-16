@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cloudflare MySQL Training Tunnel Client</title>
-  <meta name="description" content="คู่มือและสคริปต์เชื่อมต่อฐานข้อมูล MySQL Training ผ่าน Cloudflare Access TCP Tunnel สำหรับ Windows, macOS และ Linux">
+  <meta name="description"
+    content="คู่มือและสคริปต์เชื่อมต่อฐานข้อมูล MySQL Training ผ่าน Cloudflare Access TCP Tunnel สำหรับ Windows, macOS และ Linux">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg-dark: #0a0f1d;
@@ -40,7 +44,7 @@
       color: var(--text-main);
       line-height: 1.6;
       min-height: 100vh;
-      background-image: 
+      background-image:
         radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
         radial-gradient(circle at 85% 65%, rgba(6, 182, 212, 0.12) 0%, transparent 45%),
         linear-gradient(180deg, #090d16 0%, #030712 100%);
@@ -85,8 +89,17 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.85);
+      }
     }
 
     h1 {
@@ -191,8 +204,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Code Box */
@@ -452,43 +472,67 @@
     }
 
     @media (max-width: 640px) {
-      h1 { font-size: 1.85rem; }
-      .container { padding: 1.5rem 1rem; }
-      .card { padding: 1.35rem; }
-      .tab-btn { padding: 0.65rem 0.75rem; font-size: 0.85rem; }
-      .db-grid { grid-template-columns: 1fr; }
+      h1 {
+        font-size: 1.85rem;
+      }
+
+      .container {
+        padding: 1.5rem 1rem;
+      }
+
+      .card {
+        padding: 1.35rem;
+      }
+
+      .tab-btn {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.85rem;
+      }
+
+      .db-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
     <header>
-      <div class="badge-status">
-        <span class="status-dot"></span>
-        Cloudflare Tunnel Active &bull; boi-tfm-db.kttechsolution.com
-      </div>
-      <h1>เชื่อมต่อ MySQL Database Training</h1>
+      <h1>เชื่อมต่อ Database</h1>
       <p class="subtitle">
-        ระบบเชื่อมต่อฐานข้อมูล MySQL ผ่าน Cloudflare Access TCP ปลอดภัย ไม่ต้องเปิด Public Port เพียงรันสคริปต์ 1 ครั้งก็เชื่อมต่อได้ทันที
+        ระบบเชื่อมต่อฐานข้อมูลผ่าน Cloudflare Access TCP
       </p>
     </header>
 
     <!-- Platform Selector & Download Card -->
     <div class="card">
       <div class="card-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
         เลือกระบบปฏิบัติการและดาวน์โหลดสคริปต์
       </div>
 
       <div class="tabs-wrapper">
         <div class="tab-list" role="tablist">
           <button class="tab-btn active" id="tab-btn-win" onclick="switchTab('win')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
+            </svg>
             Windows (PowerShell)
           </button>
           <button class="tab-btn" id="tab-btn-unix" onclick="switchTab('unix')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 17l6-6-6-6" />
+              <path d="M12 19h8" />
+            </svg>
             macOS / Linux / WSL (Bash)
           </button>
         </div>
@@ -503,7 +547,10 @@
         <div class="code-box">
           <pre><code id="code-win">irm <span class="host-url">...</span>/windows | iex</code></pre>
           <button class="btn-copy" onclick="copySnippet('code-win')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
             Copy
           </button>
         </div>
@@ -513,19 +560,33 @@
         </div>
         <div class="action-group">
           <a id="link-dl-win" href="windows-connect-db.ps1" download="windows-connect-db.ps1" class="btn btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
             ดาวน์โหลด windows-connect-db.ps1
           </a>
-          <button class="btn btn-secondary" onclick="copyCustom('powershell -ExecutionPolicy Bypass -File .\\windows-connect-db.ps1')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <button class="btn btn-secondary"
+            onclick="copyCustom('powershell -ExecutionPolicy Bypass -File .\\windows-connect-db.ps1')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
             Copy คำสั่งรันไฟล์ที่โหลด
           </button>
         </div>
 
         <div class="alert-box alert-warning">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            <line x1="12" y1="9" x2="12" y2="13" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
           <div>
-            <strong>ข้อควรรู้สำหรับ Windows:</strong> หากติดสิทธิ์ Execution Policy ให้เปิด PowerShell แล้วรันคำสั่ง <code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code> ก่อนรันสคริปต์
+            <strong>ข้อควรรู้สำหรับ Windows:</strong> หากติดสิทธิ์ Execution Policy ให้เปิด PowerShell แล้วรันคำสั่ง
+            <code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code> ก่อนรันสคริปต์
           </div>
         </div>
       </div>
@@ -539,7 +600,10 @@
         <div class="code-box">
           <pre><code id="code-unix">curl -sSL <span class="host-url">...</span>/unix | bash</code></pre>
           <button class="btn-copy" onclick="copySnippet('code-unix')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
             Copy
           </button>
         </div>
@@ -549,122 +613,43 @@
         </div>
         <div class="action-group">
           <a id="link-dl-unix" href="unix-connect-db.sh" download="unix-connect-db.sh" class="btn btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
             ดาวน์โหลด unix-connect-db.sh
           </a>
           <button class="btn btn-secondary" onclick="copyCustom('chmod +x unix-connect-db.sh && ./unix-connect-db.sh')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
             Copy คำสั่ง chmod & run
           </button>
         </div>
 
         <div class="alert-box alert-info">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
           <div>
-            <strong>รองรับทุกแพลตฟอร์ม:</strong> Linux x86_64, Linux ARM64, macOS Apple Silicon (M1/M2/M3), macOS Intel และ WSL บน Windows สคริปต์จะตรวจสอบสถาปัตยกรรมและติดตั้ง cloudflared ให้อัตโนมัติ
+            <strong>รองรับทุกแพลตฟอร์ม:</strong> Linux x86_64, Linux ARM64, macOS Apple Silicon (M1/M2/M3), macOS Intel
+            และ WSL บน Windows สคริปต์จะตรวจสอบสถาปัตยกรรมและติดตั้ง cloudflared ให้อัตโนมัติ
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Instructions Step by Step -->
-    <div class="card">
-      <div class="card-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
-        ขั้นตอนการทำงานของสคริปต์
-      </div>
-
-      <ol class="steps-list">
-        <li class="step-item">
-          <div class="step-title">เปิด Terminal หรือ PowerShell แล้วรันคำสั่ง</div>
-          <div class="step-desc">สคริปต์จะตรวจสอบและดาวน์โหลด <code>cloudflared</code> binary ของแท้จาก Cloudflare GitHub ให้เองโดยอัตโนมัติ (เก็บไว้ในโฟลเดอร์ <code>~/.mysql-training/bin</code>)</div>
-        </li>
-        <li class="step-item">
-          <div class="step-title">เลือก Local Port (ค่าเริ่มต้น: 3306)</div>
-          <div class="step-desc">หากคุณมี MySQL รันอยู่ในเครื่องอยู่แล้ว สคริปต์จะตรวจจับพอร์ตที่ชนให้อัตโนมัติและขยับเป็น 3307 หรือ 3308 ทันที</div>
-        </li>
-        <li class="step-item">
-          <div class="step-title">เปิด Terminal ทิ้งไว้เพื่อรักษาการเชื่อมต่อ</div>
-          <div class="step-desc">เมื่อขึ้นข้อความ <code>Starting Cloudflare Access...</code> แปลว่า Tunnel พร้อมใช้งานแล้ว <strong>ห้ามปิดหน้าต่างนี้</strong> หากต้องการหยุดให้กด <kbd>Ctrl + C</kbd></div>
-        </li>
-        <li class="step-item">
-          <div class="step-title">เชื่อมต่อโปรแกรม DB Client / Node-RED</div>
-          <div class="step-desc">ใช้ข้อมูล Host เป็น <code>127.0.0.1</code> และ Port ที่แสดงบนหน้าจอ เพื่อเข้าสู่ฐานข้อมูลได้ทันที</div>
-        </li>
-      </ol>
-    </div>
-
-    <!-- Connection Parameters Card -->
-    <div class="card">
-      <div class="card-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        ข้อมูลการเชื่อมต่อ MySQL (Database Credentials)
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.95rem;">
-        นำข้อมูลด้านล่างไปใส่ในโปรแกรมฐานข้อมูล เช่น DBeaver, HeidiSQL, MySQL Workbench, DataGrip, VS Code หรือ Node-RED:
-      </p>
-
-      <div class="db-grid">
-        <div class="db-item">
-          <div class="db-item-label">Host / Server</div>
-          <div class="db-item-value">
-            <span>127.0.0.1</span>
-            <button class="btn-copy" onclick="copyCustom('127.0.0.1')">Copy</button>
-          </div>
-        </div>
-
-        <div class="db-item">
-          <div class="db-item-label">Port</div>
-          <div class="db-item-value">
-            <span>3306</span>
-            <button class="btn-copy" onclick="copyCustom('3306')">Copy</button>
-          </div>
-        </div>
-
-        <div class="db-item">
-          <div class="db-item-label">Database Name</div>
-          <div class="db-item-value">
-            <span>boi</span>
-            <button class="btn-copy" onclick="copyCustom('boi')">Copy</button>
-          </div>
-        </div>
-
-        <div class="db-item">
-          <div class="db-item-label">Username</div>
-          <div class="db-item-value">
-            <span>training</span>
-            <button class="btn-copy" onclick="copyCustom('training')">Copy</button>
-          </div>
-        </div>
-
-        <div class="db-item">
-          <div class="db-item-label">Password</div>
-          <div class="db-item-value">
-            <span id="pwd-text">••••••••</span>
-            <div style="display:flex; gap:0.25rem;">
-              <button class="btn-copy" id="pwd-toggle-btn" onclick="togglePassword()">Show</button>
-              <button class="btn-copy" onclick="copyCustom('12345687')">Copy</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="db-item">
-          <div class="db-item-label">Cloudflare Hostname</div>
-          <div class="db-item-value" style="font-size: 0.82rem;">
-            <span>boi-tfm-db.kttechsolution.com</span>
-            <button class="btn-copy" onclick="copyCustom('boi-tfm-db.kttechsolution.com')">Copy</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <p>Cloudflare MySQL Training Tunnel Client Portal &bull; Secured with Cloudflare Access</p>
-    </footer>
   </div>
 
   <div id="toast" class="toast">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
     <span id="toast-msg">คัดลอกลงคลิปบอร์ดแล้ว!</span>
   </div>
 
@@ -685,10 +670,10 @@
 
     // Dynamic origin setup
     function setupDynamicUrls() {
-      const origin = window.location.origin && window.location.origin !== 'null' && !window.location.origin.startsWith('file:') 
-        ? window.location.origin 
+      const origin = window.location.origin && window.location.origin !== 'null' && !window.location.origin.startsWith('file:')
+        ? window.location.origin
         : 'https://<your-worker-domain>';
-      
+
       document.querySelectorAll('.host-url').forEach(el => {
         el.textContent = origin;
       });
@@ -767,4 +752,5 @@
     window.addEventListener('DOMContentLoaded', setupDynamicUrls);
   </script>
 </body>
+
 </html>
